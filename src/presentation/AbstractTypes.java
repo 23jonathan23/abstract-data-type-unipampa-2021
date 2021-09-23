@@ -3,6 +3,7 @@ package presentation;
 import java.util.Scanner;
 
 import application.BinaryTreeHandler;
+import application.VectorHandler;
 import core.Command;
 
 public class AbstractTypes {
@@ -18,19 +19,43 @@ public class AbstractTypes {
             case 1:
                 executeBinaryTree();
                 break;
+            case 2:
+                executeVector();
             default:
                 return;
         }
     }
 
     private static void executeBinaryTree() {
-        var durationInsert = BinaryTreeHandler.execute(Command.InsertStudents);
+        var binaryTreeHandler = new BinaryTreeHandler();
+
+        var durationInsert = binaryTreeHandler.execute(Command.InsertStudents);
         
-        var durationPrint = BinaryTreeHandler.execute(Command.PrintStudents);
+        var durationPrint = binaryTreeHandler.execute(Command.PrintStudents);
 
-        var durationCount = BinaryTreeHandler.execute(Command.CountStudentsWithESCourse);
+        var durationCount = binaryTreeHandler.execute(Command.CountStudentsWithESCourse);
 
-        var durationRemove = BinaryTreeHandler.execute(Command.RemoveStudents);
+        var durationRemove = binaryTreeHandler.execute(Command.RemoveStudents);
+
+        printResult(Command.InsertStudents, durationInsert);
+
+        printResult(Command.PrintStudents, durationPrint);
+
+        printResult(Command.CountStudentsWithESCourse, durationCount);
+
+        printResult(Command.RemoveStudents, durationRemove);
+    }
+
+    private static void executeVector() {
+        var vectorHandler = new VectorHandler();
+
+        var durationInsert = vectorHandler.execute(Command.InsertStudents);
+        
+        var durationPrint = vectorHandler.execute(Command.PrintStudents);
+
+        var durationCount = vectorHandler.execute(Command.CountStudentsWithESCourse);
+
+        var durationRemove = vectorHandler.execute(Command.RemoveStudents);
 
         printResult(Command.InsertStudents, durationInsert);
 
