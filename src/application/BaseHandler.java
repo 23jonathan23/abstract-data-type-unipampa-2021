@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import core.Command;
 import core.Estudante;
@@ -9,7 +10,43 @@ import core.Estudante;
 public abstract class BaseHandler {
     protected int registrationToBeDeleted = 202060000;
 
-    public abstract long execute(Command command);
+    private int generateStudentsNumber = 100000;
+
+    public long execute(Command command) {
+        long startTime;
+
+        switch (command) {
+            case InsertStudents:
+                var students = generateManyStudents(generateStudentsNumber);
+
+                startTime = System.nanoTime();
+
+                insertManyStudentsInBynaryTree(students);
+                break;
+            case PrintStudents:
+                startTime = System.nanoTime();
+
+                printStudentsInOrder();
+                break;
+
+            case CountStudentsWithESCourse:
+                startTime = System.nanoTime();
+
+                countStudentsWithEsCourse();
+                break;
+            case RemoveStudents:
+                startTime = System.nanoTime();
+
+                removeStudents();
+                break;
+            default:
+                return 0;
+        }
+
+        var endTime = System.nanoTime();
+
+        return TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
+    }
 
     protected abstract void insertManyStudentsInBynaryTree(List<Estudante> students);
 
@@ -21,10 +58,10 @@ public abstract class BaseHandler {
 
     protected static List<Estudante> generateManyStudents(int qtd) {
         var students = new ArrayList<Estudante>();
-    
-        for(var i = 0; i < qtd; i++)
+
+        for (var i = 0; i < qtd; i++)
             students.add(new Estudante());
-    
+
         return students;
     }
 }

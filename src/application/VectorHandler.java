@@ -2,9 +2,7 @@ package application;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import core.Command;
 import core.Estudante;
 import core.abstractType.Vector;
 
@@ -13,43 +11,6 @@ public class VectorHandler extends BaseHandler {
 
     public VectorHandler() {
         _vector = new Vector();
-    }
-
-    @Override
-    public long execute(Command command) {
-        long startTime;
-    
-        switch (command) {
-          case InsertStudents:
-            var students = generateManyStudents(100000);
-    
-            startTime = System.nanoTime();
-    
-            insertManyStudentsInBynaryTree(students);
-            break;
-          case PrintStudents:
-            startTime = System.nanoTime();
-    
-            printStudentsInOrder();
-            break;
-    
-          case CountStudentsWithESCourse:
-            startTime = System.nanoTime();
-    
-            countStudentsWithEsCourse();
-            break;
-          case RemoveStudents:
-            startTime = System.nanoTime();
-    
-            removeStudents();
-            break;
-          default:
-            return 0;
-        }
-    
-        var endTime = System.nanoTime();
-    
-        return TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
     }
 
     //requirement 1
