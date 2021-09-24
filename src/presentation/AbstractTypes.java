@@ -3,6 +3,7 @@ package presentation;
 import java.util.Scanner;
 
 import application.BinaryTreeHandler;
+import application.DoublyLinkedListHandler;
 import application.VectorHandler;
 import core.Command;
 
@@ -21,6 +22,8 @@ public class AbstractTypes {
                 break;
             case 2:
                 executeVector();
+            case 3:
+                executeDoublyLinkedList();
             default:
                 return;
         }
@@ -64,6 +67,27 @@ public class AbstractTypes {
         printResult(Command.CountStudentsWithESCourse, durationCount);
 
         printResult(Command.RemoveStudents, durationRemove);
+    }
+
+    private static void executeDoublyLinkedList() {
+
+        var linkedList = new DoublyLinkedListHandler();
+
+        var insertionDuration = linkedList.execute(Command.InsertStudents);
+
+        var printDuration = linkedList.execute(Command.PrintStudents);
+
+        var countSEEstudentsDuration = linkedList.execute(Command.CountStudentsWithESCourse);
+
+        var studentsRemovalDuration = linkedList.execute(Command.RemoveStudents);
+
+        printResult(Command.InsertStudents, insertionDuration);
+
+        printResult(Command.PrintStudents, printDuration);
+
+        printResult(Command.CountStudentsWithESCourse, countSEEstudentsDuration);
+
+        printResult(Command.RemoveStudents, studentsRemovalDuration);
     }
 
     private static void printResult(Command command, long duration) {
