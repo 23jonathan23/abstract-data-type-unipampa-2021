@@ -21,7 +21,7 @@ public abstract class BaseHandler {
 
                 startTime = System.nanoTime();
 
-                insertManyStudentsInBynaryTree(students);
+                insertManyStudents(students);
                 break;
             case PrintStudents:
                 startTime = System.nanoTime();
@@ -48,7 +48,7 @@ public abstract class BaseHandler {
         return TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
     }
 
-    protected abstract void insertManyStudentsInBynaryTree(List<Estudante> students);
+    protected abstract void insertManyStudents(List<Estudante> students);
 
     protected abstract void printStudentsInOrder();
 

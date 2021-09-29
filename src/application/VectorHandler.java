@@ -15,7 +15,7 @@ public class VectorHandler extends BaseHandler {
 
     //requirement 1
     @Override
-    protected void insertManyStudentsInBynaryTree(List<Estudante> students) {
+    protected void insertManyStudents(List<Estudante> students) {
         _vector.addManyElements(students);
     }
 

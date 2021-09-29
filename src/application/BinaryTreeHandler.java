@@ -11,7 +11,7 @@ public class BinaryTreeHandler extends BaseHandler {
 
   //requirement 1
   @Override
-  protected void insertManyStudentsInBynaryTree(List<Estudante> students) {
+  protected void insertManyStudents(List<Estudante> students) {
     var rootNode = new Node(students.get(0));
 
     students.remove(0);
