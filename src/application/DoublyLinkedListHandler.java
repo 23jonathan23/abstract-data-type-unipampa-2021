@@ -16,7 +16,7 @@ public class DoublyLinkedListHandler extends BaseHandler {
     }
 
     @Override
-    protected void insertManyStudentsInBynaryTree(List<Estudante> students) {
+    protected void insertManyStudents(List<Estudante> students) {
 
         for (var student : students) {
             linkedList.add(student);
